@@ -24,8 +24,7 @@ get_line(char *input, int max)
 {
   // read input line
   if(fgets(input, MAX_INPUT_LINE, stdin)==NULL){
-    perror("failed read");
-    return -1;
+    exit(0); 			/* we are done, EOF */
   }
   return 0; 
 }
@@ -47,9 +46,7 @@ main(int argc, char* argv[])
       printf("shell5: ");
       fflush(stdout);
     }
-    if (get_line(input, MAX_INPUT_LINE) < 0) {
-      exit(-1);
-    }
+    get_line(input, MAX_INPUT_LINE);
       
     tokenCount = parse(input, tokens, &totalCmds);
     if (tokenCount > 0) {	
